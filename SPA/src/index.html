@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<title>Single Page App Without A Framework</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet">
+</head>
+
+<body>
+	<!-- navBar start -->
+	<nav class="navbar navbar-expand-lg navbar-light col-sm-12">
+		<a class="navbar-brand" href="#">LOGO</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+	
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#shop">SHOP</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#magzine">MAGZINE</a>
+			</li>
+		</ul>
+		<form class="form-inline my-2 my-lg-0">
+			<input class="form-control mr-sm-2" id = "myInput" type="search" placeholder="Search" aria-label="Search">
+			<a class="nav-link" href="#" >
+				Cart
+			</a>
+			<a class="nav-link" href="#" >
+				Login
+			</a>
+		</form>
+		</div>
+	</nav>
+	<!-- navBar End --> 
+	
+	<div class="main-content">
+		<div class="all-products page">
+			<ul class="filters">
+					<script id="products-filters-template" type="x-handlebars-template">​
+						
+						{{#each this}}
+							<li data-index="{{id}}" class="filter-criteria">
+								<div class="dropdown-label"><span>{{name}}</span> <span class="icon-change rotatedropdownArrow"> ^ </span></div>
+								<div class="dropdown-option">
+									{{#each value}}
+										<label><input type="checkbox" name="{{this}}" value="{{this}}">{{this}}</label>
+									{{/each}}
+								</div>
+							</li>
+						{{/each}}
+					
+					</script>
+					
+					<button>Clear filters</button>
+			</ul>
+
+			<ul class="products-list">
+				<script id="products-template" type="x-handlebars-template">​
+					{{#each this}}
+						<li data-index="{{id}}" class="line-content">
+							<a href="#" class="product-photo"></a>
+							<h2><a href="#"> {{name}} </a></h2>
+							<ul class="product-description">
+								<li><span>Manufacturer: </span>{{specs.manufacturer}}</li>
+								<li><span>Storage: </span>{{specs.storage}} GB</li>
+								<li><span>OS: </span>{{specs.os}}</li>
+								<li><span>Camera: </span>{{specs.camera}} Mpx</li>
+							</ul>
+							<button >Buy Now!</button>
+							<p class="product-price">{{price}}$</p>
+							<div class="highlight"></div>
+						</li>
+					{{/each}}
+				</script>
+			</ul>
+
+			<ul id="pagin"></ul>
+		</div>
+
+		<div class="single-product page">
+			<div class="overlay"></div>
+			<div class="preview-large">
+				<h3>Single product view</h3>
+				<img src="#"/>
+				<p></p>
+				<span class="close">×</span>
+			</div>
+		</div>
+
+		<div class="error page">
+			<h3>Sorry, something went wrong :(</h3>
+		</div>
+
+		<div class="shop page">
+			<h3>Shop's content goes here.</h3>
+		</div>
+
+		<div class="magzine page">
+			<h3>Magzine's content goes here.</h3>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</body>
+</html>
